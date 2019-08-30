@@ -70,6 +70,94 @@ double get_double(void)
     return input;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void fraction_calc(void)
+{
+    int a, b, c, d, num, denom, nod;
+    char ch;
+    printf("Enter a value for the first fraction in the x/x format:\n");
+    scanf("%d%c%d", &a, &ch, &b);
+    printf("%d%c%d\n", a, ch, b);
+    printf("Enter a value for the second fraction in the x/x format:\n");
+    scanf("%d%c%d", &c, &ch, &d);
 
+    //addition
+    num = (a * d) + (c * b);
+    denom = b * d;
+    nod = nod_fraction(num, denom);
+    if(nod)
+    {
+        num = num/nod;
+        denom = denom/nod;
+    }
+    printf("%d%c%d + %d%c%d = %d%c%d\n", a, ch, b, c, ch, d, num, ch, denom);
+
+    //difference
+    num = (a * d) - (c * b);
+    denom = b * d;
+    nod = nod_fraction(num, denom);
+    if(nod)
+    {
+        num = num/nod;
+        denom = denom/nod;
+    }
+    printf("%d%c%d - %d%c%d = %d%c%d\n", a, ch, b, c, ch, d, num, ch, denom);
+
+    //multiplication
+    num = a * c;
+    denom = b * d;
+    nod = nod_fraction(num, denom);
+    if(nod)
+    {
+        num = num/nod;
+        denom = denom/nod;
+    }
+    printf("%d%c%d * %d%c%d = %d%c%d\n", a, ch, b, c, ch, d, num, ch, denom);
+
+    //division
+    num = a * d;
+    denom = b * c;
+    nod = nod_fraction(num, denom);
+    if(nod)
+    {
+        num = num/nod;
+        denom = denom/nod;
+    }
+    printf("%d%c%d / %d%c%d = %d%c%d\n", a, ch, b, c, ch, d, num, ch, denom);
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int nod_fraction(int a, int b)
+{
+    while(a != b)
+    {
+        if(a > b)
+            a -= b;
+        else
+            b -= a;
+    }
+    return a;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int sum_of_digits(int n)
+{
+    int sum = 0;
+    while(n)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int reversed_number(int n)
+{
+    int remainder, rnum = 0;
+    while(n != 0)
+    {
+        remainder = n % 10;
+        rnum = rnum * 10 + remainder;
+        n /= 10;
+    }
+    return rnum;
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
