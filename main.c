@@ -4,7 +4,9 @@
 
 int main()
 {
-    int select, num, count;
+    int select, num, count, ind, i, j;
+    int dec = 1;
+    int length = 0;
     menu();
 
     while((select = get_int()) != 27)
@@ -41,9 +43,22 @@ int main()
                 break;
             case 5 : printf("paragraph 5\n");
                 break;
-            case 6 : printf("paragraph 6\n");
+            case 6 : printf("Enter an integer: \n");
+                     num = get_int();
+                     length = countOfDigits(num);
+
+                     for(j = 1; j < length; j++)
+                            dec *= 10;
+
+                     for(i = 0; i < length; i++)
+                     {
+                         ind = num / dec % 10;
+                         dec /= 10;
+                         printf("%d ", ind);
+                     }
+                     printf("\n");
                 break;
-            case 7 : printf("paragraph 3\n");
+            case 7 : printf("paragraph 7\n");
                     printf("Enter an integer: \n");
                     num = get_int();
                     num = reversed_number(num);
